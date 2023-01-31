@@ -17,7 +17,6 @@ export const Container = styled.section`
 `;
 
 export const LeftSide = styled.div`
-
 ${({ theme }) => css`
     display: flex;
     justify-content: center;
@@ -60,10 +59,19 @@ export const TempContainer = styled.div`
 `;
 
 export const RightSide = styled.div`
-    flex: 1;
+   ${({ theme }) => css`
+   flex: 1;
     display: flex;
     flex-flow: column nowrap;
     height: 16rem;
+    padding-bottom: ${theme.spacings.small};
+    border-bottom: 1px solid ${theme.colors.white}; 
+
+    @media ${theme.media.gteMedium} {
+        border: none;
+    }
+
+   `}
 `;
 
 export const Row = styled.div`
@@ -73,7 +81,7 @@ export const Row = styled.div`
     justify-content: space-around;
     align-items: center;
 
-    & p {
+    & article {
         display: flex;
         flex-direction: column;
         align-items: center;

@@ -22,28 +22,28 @@ const GridTwoColumns = ({ data }: Props) => {
       </Styled.LeftSide>
       <Styled.RightSide>
         <Styled.Row>
-          <p>
+          <article>
             {data.main.temp_max.toFixed(0)}º <span>Max.</span>
-          </p>
-          <p>
+          </article>
+          <article>
             {data.wind.speed.toFixed(0)}km/h <span>Vento</span>
-          </p>
-          <p>
+          </article>
+          <article>
           {dateFormatter.formatDate(data.sys.sunrise)} <span>Nascer do Sol</span>
-          </p>
+          </article>
         </Styled.Row>
         <Styled.Row>
-          <p>
+          <article>
             {data.main.temp_min.toFixed(0)}º <span>Min.</span>
-          </p>
-          <p>
+          </article>
+          <article>
             {data.main.humidity}% <span>Humidade</span>
-          </p>
-          <p>
+          </article>
+          <article>
             <>
             {dateFormatter.formatDate(data.sys.sunset)} <span>Pôr do Sol</span>
             </>
-          </p>
+          </article>
         </Styled.Row>
       </Styled.RightSide>
     </Styled.Container>

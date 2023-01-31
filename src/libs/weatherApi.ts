@@ -13,7 +13,7 @@ export const weatherApi = {
   }
   ,getDayForecastData: async (latitude: number, longitude: number) => {
     const res = await axios.get(
-      `${apiBaseUrl}forecast?lat=${latitude}&lon=${longitude}&units=metric&lang=pt&appid=${apiKey}`,
+      `${apiBaseUrl}forecast?lat=${latitude}&lon=${longitude}&units=metric&cnt=6&lang=pt&appid=${apiKey}`,
     );
     return res.data;
   },

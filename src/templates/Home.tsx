@@ -3,14 +3,17 @@ import { weatherApi } from 'libs/weatherApi';
 import Heading from 'components/Heading';
 import PageContainer from 'components/PageContainer';
 import GridTwoColumns from 'components/GridTwoColumns';
-import { CurrentWeatherApiResponse } from '../../types/weatherApiResponse';
+import { CurrentWeatherApiResponse, DayForecastApiResponse } from '../../types/weatherApiResponse';
+import TodaysWeatherContainer from 'components/TodaysWeatherContainer';
 
 const Home = () => {
-  const [data, setData] = useState<CurrentWeatherApiResponse | null>(null);
+  const [currentWeatherData, setCurrentWeatherData] = useState<CurrentWeatherApiResponse | null>(null);
+  const [todaysForecastData, setTodaysForecastData] = useState<DayForecastApiResponse | null>(null);
   // Create loading state to display while loading
 
   const getUserCurrentPosition = async (lat: number, lon: number) => {
-    setData(await weatherApi.getCurrentWeatherDate(lat, lon));
+    setCurrentWeatherData(await weatherApi.getCurrentWeatherDate(lat, lon));
+    setTodaysForecastData(await weatherApi.getDayForecastData(lat, lon));
   };
 
   useEffect(() => {
@@ -22,14 +25,15 @@ const Home = () => {
     });
   }, []);
 
-  console.log(data);
+  console.log(todaysForecastData);
 
   return (
     <PageContainer>
-      {data && (
+      {currentWeatherData && todaysForecastData && (
         <>
-          <Heading city={`${data.name}, ${data.sys.country}`} />
-          <GridTwoColumns data={data} />
+          <Heading title={`${currentWeatherData.name}, ${currentWeatherData.sys.country}`} date />
+          <GridTwoColumns data={currentWeatherData} />
+          <TodaysWeatherContainer todaysForecastData={todaysForecastData} />
         </>
       )}
     </PageContainer>
