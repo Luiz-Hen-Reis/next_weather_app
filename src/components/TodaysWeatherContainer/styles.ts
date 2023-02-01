@@ -9,12 +9,13 @@ export const Container = styled.section`
 export const RowContainer = styled.div`
 ${({ theme }) => css`
         margin-top: ${theme.spacings.medium};
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-evenly;
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
 
         @media ${theme.media.gteMedium} {
-            flex-flow: row nowrap;
+            grid-template-columns: repeat(6, 1fr);
+            gap: .7rem;
         }
     `}
 `;

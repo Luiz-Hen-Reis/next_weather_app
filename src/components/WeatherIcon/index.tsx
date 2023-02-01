@@ -4,13 +4,14 @@ import * as Styled from './styles';
 interface Props {
     icon: string;
     desc: string;
+    size: number;
 }
 
-const WeatherIcon = ({ icon, desc }: Props) => {
+const WeatherIcon = ({ icon, desc, size }: Props) => {
 
   return (
     <Styled.Container>
-        <Image src={`/assets/icons/${icon}.png`} alt={desc} width={200} height={200} />
+        <Image src={`/assets/icons/${icon}.png`} alt={desc} width={size} height={size} />
     </Styled.Container>
   )
 }

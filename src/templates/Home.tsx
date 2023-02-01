@@ -5,11 +5,11 @@ import PageContainer from 'components/PageContainer';
 import GridTwoColumns from 'components/GridTwoColumns';
 import { CurrentWeatherApiResponse, DayForecastApiResponse } from '../../types/weatherApiResponse';
 import TodaysWeatherContainer from 'components/TodaysWeatherContainer';
+import Loading from 'components/Loading';
 
 const Home = () => {
   const [currentWeatherData, setCurrentWeatherData] = useState<CurrentWeatherApiResponse | null>(null);
   const [todaysForecastData, setTodaysForecastData] = useState<DayForecastApiResponse | null>(null);
-  // Create loading state to display while loading
 
   const getUserCurrentPosition = async (lat: number, lon: number) => {
     setCurrentWeatherData(await weatherApi.getCurrentWeatherDate(lat, lon));
@@ -25,10 +25,11 @@ const Home = () => {
     });
   }, []);
 
-  console.log(todaysForecastData);
-
   return (
     <PageContainer>
+      {!currentWeatherData && !todaysForecastData && (
+        <Loading />
+      )}
       {currentWeatherData && todaysForecastData && (
         <>
           <Heading title={`${currentWeatherData.name}, ${currentWeatherData.sys.country}`} date />

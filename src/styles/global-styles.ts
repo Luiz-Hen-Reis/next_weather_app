@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -17,6 +17,13 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
     font-family: ${({ theme }) => theme.font.family.default};
     background-color: ${({ theme }) => theme.colors.primaryColor};
+    
+    ${({ theme }) => css`
+    
+    @media ${theme.media.gteMedium} {
+      overflow: hidden;
+    }
+    `}
   }
 
   h1, h2, h3, h4, h5, h6 {

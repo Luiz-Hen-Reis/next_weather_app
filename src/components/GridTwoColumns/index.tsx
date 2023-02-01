@@ -14,7 +14,7 @@ const GridTwoColumns = ({ data }: Props) => {
   return (
     <Styled.Container>
       <Styled.LeftSide>
-        <WeatherIcon icon={icon} desc={description} />
+        <WeatherIcon icon={icon} desc={description} size={200} />
         <Styled.TempContainer>
           <h2>{data.main.temp.toFixed(0)}º</h2>
           <p>{stringFormatter.toCapitalize(description)}</p>

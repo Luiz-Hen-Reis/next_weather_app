@@ -11,10 +11,10 @@ const TodaysWeatherContainer = ({ todaysForecastData }: Props) => {
   
   return (
     <Styled.Container>
-      <Heading title="Todays Weather" as="h3" />
+      <Heading title="Next Forecasts" as="h3" />
       <Styled.RowContainer>
-        {todaysForecastData.list.map((item, index) => (
-          <WeatherRow key={index} />
+        {todaysForecastData.list.map((data, index) => (
+          <WeatherRow key={index} data={data} />
         ))}
       </Styled.RowContainer>
     </Styled.Container>

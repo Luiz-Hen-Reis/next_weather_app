@@ -88,4 +88,10 @@ export const dateFormatter = {
       minutes > 10 ? minutes : `0${minutes}`
     }:${seconds > 10 ? seconds : `0${seconds}`}`;
   },
+  getHourFromDateAndFormatIt: (secs: number) => {
+    let fullDate = new Date(secs * 1000);
+    let hour = fullDate.getHours();
+
+    return `${hour > 10 ? hour : `0${hour}`}h`;
+  },
 };
