@@ -31,6 +31,9 @@ const Home = () => {
     });
   }, []);
 
+  console.log(currentWeatherData);
+  
+
   return (
     <PageContainer>
       {!currentWeatherData && !todaysForecastData && (

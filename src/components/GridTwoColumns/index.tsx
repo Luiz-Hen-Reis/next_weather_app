@@ -1,6 +1,8 @@
 import WeatherIcon from 'components/WeatherIcon';
+import { useAppContext } from 'contexts/app';
 import { dateFormatter } from 'helpers/dateFormatter';
 import { stringFormatter } from 'helpers/stringFormatter';
+import { useEffect } from 'react';
 import { CurrentWeatherApiResponse } from '../../../types/weatherApiResponse';
 import * as Styled from './styles';
 
@@ -10,6 +12,12 @@ interface Props {
 
 const GridTwoColumns = ({ data }: Props) => {
   const { icon, description } = data.weather[0];
+
+  const { background, setBackground } = useAppContext();
+
+  useEffect(() => {
+    setBackground(`/assets/backgrounds/${data.weather[0].main}.png`)
+  }, []);
 
   return (
     <Styled.Container>

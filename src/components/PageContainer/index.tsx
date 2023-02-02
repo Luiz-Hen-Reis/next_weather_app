@@ -1,3 +1,4 @@
+import { useAppContext } from 'contexts/app';
 import * as Styled from './styles';
 
 interface Props {
@@ -5,8 +6,10 @@ interface Props {
 }
 
 const PageContainer = ({ children }: Props) => {
+  const { background } = useAppContext();
+
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper background={background}>
       <Styled.Container>{children}</Styled.Container>
     </Styled.Wrapper>
   );

@@ -2,9 +2,14 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.article`
     ${({ theme }) => css`
-    background-color: ${theme.colors.secondaryColor};
+    
+    background: rgba(27, 41, 172, 0.41);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(27, 41, 172, 0.3);
     padding: 1rem;
-    border: 1px solid #000;
     margin-bottom: ${theme.spacings.xsmall};
     display: flex;
     justify-content: space-evenly;
