@@ -16,10 +16,9 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-size: 1.6rem;
     font-family: ${({ theme }) => theme.font.family.default};
-    background-color: ${({ theme }) => theme.colors.primaryColor};
-    
+    overflow-x: hidden;
+
     ${({ theme }) => css`
-    
     @media ${theme.media.gteMedium} {
       overflow: hidden;
     }

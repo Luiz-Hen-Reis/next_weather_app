@@ -5,7 +5,11 @@ interface Props {
 }
 
 const PageContainer = ({ children }: Props) => {
-  return <Styled.Container>{children}</Styled.Container>;
+  return (
+    <Styled.Wrapper>
+      <Styled.Container>{children}</Styled.Container>
+    </Styled.Wrapper>
+  );
 };
 
 export default PageContainer;
