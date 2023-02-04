@@ -76,7 +76,9 @@ export const dateFormatter = {
     const month = dateFormatter.switchMonth(today.getMonth());
     const year = today.getFullYear();
 
-    return `${dayOfTheWeek}, ${day} de ${month} de ${year}`;
+    return `${dayOfTheWeek}, ${
+      day > 10 ? day : `0${day}`
+    } de ${month} de ${year}`;
   },
   formatDate: (secs: number) => {
     let fullDate = new Date(secs * 1000);
@@ -92,6 +94,6 @@ export const dateFormatter = {
     let fullDate = new Date(secs * 1000);
     let hour = fullDate.getHours();
 
-    return `${hour > 10 ? hour : `0${hour}`}h`;
+    return `${hour > 10 ? hour : `0${hour}`}:00`;
   },
 };

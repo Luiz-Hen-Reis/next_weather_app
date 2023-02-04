@@ -21,6 +21,11 @@ export const Container = styled.article`
         margin: 0;
     }
 
+    .flex-article {
+        display: flex;
+        gap: 1rem;
+    }
+
     @media ${theme.media.gteMedium} {
         height: 23rem;
         flex-direction: column;

@@ -13,10 +13,14 @@ interface Props {
 const GridTwoColumns = ({ data }: Props) => {
   const { icon, description } = data.weather[0];
 
-  const { background, setBackground } = useAppContext();
+  const { setBackground } = useAppContext();
 
   useEffect(() => {
     setBackground(`/assets/backgrounds/${data.weather[0].main}.png`)
+
+    return () => {
+      setBackground(null);
+    }
   }, []);
 
   return (

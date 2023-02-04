@@ -9,14 +9,14 @@ interface Props {
 
 const Heading = ({ title, as, date = false }: Props) => {
   return (
-    <>
+    <Styled.Wrapper>
       <Styled.Container as={as}>{title}</Styled.Container>
       {date && (
         <Styled.DateContainer as="p">
           {dateFormatter.getDate()}
         </Styled.DateContainer>
       )}
-    </>
+    </Styled.Wrapper>
   );
 };
 

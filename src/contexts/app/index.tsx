@@ -5,7 +5,7 @@ import { ContextType, DataType, ProviderType } from "./types";
 export { useAppContext } from './hook';
 
 const initialState: DataType = {
-  background: '#000'
+  background: null
 };
 
 export const AppContext = createContext<ContextType>({

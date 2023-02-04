@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { weatherApi } from 'libs/weatherApi';
-import Heading from 'components/Heading';
+import Loading from 'components/Loading';
 import PageContainer from 'components/PageContainer';
 import GridTwoColumns from 'components/GridTwoColumns';
 import {
@@ -8,31 +8,58 @@ import {
   DayForecastApiResponse,
 } from '../../types/weatherApiResponse';
 import TodaysWeatherContainer from 'components/TodaysWeatherContainer';
-import Loading from 'components/Loading';
 import Head from 'next/head';
+import Header from 'components/Header';
 
-const Home = () => {
+interface Props {
+  location?: string;
+}
+
+const Home = ({ location }: Props) => {
   const [currentWeatherData, setCurrentWeatherData] =
     useState<CurrentWeatherApiResponse | null>(null);
   const [todaysForecastData, setTodaysForecastData] =
     useState<DayForecastApiResponse | null>(null);
 
-  const getUserCurrentPosition = async (lat: number, lon: number) => {
-    setCurrentWeatherData(await weatherApi.getCurrentWeatherDate(lat, lon));
-    setTodaysForecastData(await weatherApi.getDayForecastData(lat, lon));
+  const getUserCurrentPosition = async (
+    lat?: number,
+    lon?: number,
+  ) => {
+    if (!location) {
+      setCurrentWeatherData(await weatherApi.getCurrentWeatherData(lat, lon));
+      setTodaysForecastData(await weatherApi.getDayForecastData(lat, lon));
+    }
+
+    if (location) {
+      setCurrentWeatherData(
+        await weatherApi.getCurrentWeatherDataByLocation(location),
+      );
+      setTodaysForecastData(
+        await weatherApi.getDayForecastDataByLocation(location),
+      );
+    }
   };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const lat = Number(position.coords.latitude.toFixed(2));
-      const lon = Number(position.coords.longitude.toFixed(2));
+    if (!location) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = Number(position.coords.latitude.toFixed(2));
+        const lon = Number(position.coords.longitude.toFixed(2));
 
-      getUserCurrentPosition(lat, lon);
-    });
+        getUserCurrentPosition(lat, lon);
+      });
+
+      if(location) {
+        getUserCurrentPosition();
+      }
+    }
+
+    return () => {
+      getUserCurrentPosition(0, 0);
+    };
   }, []);
 
-  console.log(currentWeatherData);
-  
+  console.log(currentWeatherData)
 
   return (
     <PageContainer>
@@ -49,10 +76,7 @@ const Home = () => {
           <Head>
             <title>{currentWeatherData.name} | Previsão</title>
           </Head>
-          <Heading
-            title={`${currentWeatherData.name}, ${currentWeatherData.sys.country}`}
-            date
-          />
+          <Header data={currentWeatherData} />
           <GridTwoColumns data={currentWeatherData} />
           <TodaysWeatherContainer todaysForecastData={todaysForecastData} />
         </>

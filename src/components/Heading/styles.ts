@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 
+export const Wrapper = styled.div`
+  display: inline-block;
+`;
+
 export const Container = styled.h1`
   ${({ theme }) => css`
   font-size: theme.font.sizes.medium;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
   `}; 
 `;
