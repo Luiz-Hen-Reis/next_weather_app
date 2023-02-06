@@ -53,10 +53,6 @@ const Home = ({ location }: Props) => {
         getUserCurrentPosition();
       }
     }
-
-    return () => {
-      getUserCurrentPosition(0, 0);
-    };
   }, []);
 
   return (
