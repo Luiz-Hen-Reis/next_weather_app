@@ -59,8 +59,6 @@ const Home = ({ location }: Props) => {
     };
   }, []);
 
-  console.log(currentWeatherData)
-
   return (
     <PageContainer>
       {!currentWeatherData && !todaysForecastData && (
