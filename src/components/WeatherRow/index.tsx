@@ -10,7 +10,9 @@ interface Props {
 const WeatherRow = ({ data }: Props) => {
   return (
     <Styled.Container>
-      <article>{dateFormatter.getHourFromDateAndFormatIt(data.dt)} (BR)</article>
+      <article>
+        {dateFormatter.getHourFromDateAndFormatIt(data.dt)} (BR)
+      </article>
       <article>
         <WeatherIcon
           icon={data.weather[0].icon}
@@ -18,7 +20,7 @@ const WeatherRow = ({ data }: Props) => {
           size={50}
         />
       </article>
-      <article className='flex-article'>
+      <article className="flex-article">
         <div>
           {data.main.temp_min.toFixed()}º <br /> <span>Min.</span>
         </div>

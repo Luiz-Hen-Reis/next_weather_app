@@ -16,11 +16,11 @@ const GridTwoColumns = ({ data }: Props) => {
   const { setBackground } = useAppContext();
 
   useEffect(() => {
-    setBackground(`/assets/backgrounds/${data.weather[0].main}.png`)
+    setBackground(`/assets/backgrounds/${data.weather[0].main}.png`);
 
     return () => {
       setBackground(null);
-    }
+    };
   }, []);
 
   return (
@@ -41,7 +41,8 @@ const GridTwoColumns = ({ data }: Props) => {
             {data.wind.speed.toFixed(0)}km/h <span>Vento</span>
           </article>
           <article>
-          {dateFormatter.formatDate(data.sys.sunrise)} <span>Nascer do Sol</span>
+            {dateFormatter.formatDate(data.sys.sunrise)}{' '}
+            <span>Nascer do Sol</span>
           </article>
         </Styled.Row>
         <Styled.Row>
@@ -53,7 +54,8 @@ const GridTwoColumns = ({ data }: Props) => {
           </article>
           <article>
             <>
-            {dateFormatter.formatDate(data.sys.sunset)} <span>Pôr do Sol</span>
+              {dateFormatter.formatDate(data.sys.sunset)}{' '}
+              <span>Pôr do Sol</span>
             </>
           </article>
         </Styled.Row>

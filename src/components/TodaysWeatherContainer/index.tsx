@@ -8,7 +8,6 @@ interface Props {
 }
 
 const TodaysWeatherContainer = ({ todaysForecastData }: Props) => {
-  
   return (
     <Styled.Container>
       <Heading title="Previsão das Próximas Horas" as="h3" />

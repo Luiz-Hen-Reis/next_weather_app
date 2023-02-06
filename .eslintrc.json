@@ -12,7 +12,8 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "next", "prettier"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -47,5 +48,11 @@
       }
     ],
     "@next/next/no-img-element": "off"
-  }
+  },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ]
 }
