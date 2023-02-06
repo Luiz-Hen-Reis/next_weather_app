@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <Styled.Container>
       <Image src="/assets/loading.svg" alt="loading" width={200} height={200} />
-      <span>Loading...</span>
+      <span>Carregando...</span>
     </Styled.Container>
   );
 };

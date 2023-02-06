@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "next";
-import { ParsedUrlQuery } from "querystring";
 import Home from "templates/Home";
 
 interface Props {
@@ -14,12 +13,8 @@ const Location = ({ location }: Props) => {
 
 export default Location;
 
-interface IParams extends ParsedUrlQuery {
-    location: string;
-}
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { location } = context.params as IParams;
+    const { location } = context.params;
 
     return {
         props: {
