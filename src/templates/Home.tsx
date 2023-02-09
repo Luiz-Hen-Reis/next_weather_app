@@ -12,47 +12,36 @@ import Head from 'next/head';
 import Header from 'components/Header';
 
 interface Props {
-  location?: string;
+  currentLocationWeather?: CurrentWeatherApiResponse;
+  locationDayForecastWeather?: DayForecastApiResponse;
 }
 
-const Home = ({ location }: Props) => {
+const Home = ({
+  currentLocationWeather,
+  locationDayForecastWeather,
+}: Props) => {
   const [currentWeatherData, setCurrentWeatherData] =
     useState<CurrentWeatherApiResponse | null>(null);
   const [todaysForecastData, setTodaysForecastData] =
     useState<DayForecastApiResponse | null>(null);
 
-  const getUserCurrentPosition = async (
-    lat?: number,
-    lon?: number,
-  ) => {
-    if (!location) {
-      setCurrentWeatherData(await weatherApi.getCurrentWeatherData(lat, lon));
-      setTodaysForecastData(await weatherApi.getDayForecastData(lat, lon));
-    }
+  const getUserCurrentPosition = async (lat: number, lon: number) => {
+    setCurrentWeatherData(await weatherApi.getCurrentWeatherData(lat, lon));
+    setTodaysForecastData(await weatherApi.getDayForecastData(lat, lon));
 
-    if (location) {
-      setCurrentWeatherData(
-        await weatherApi.getCurrentWeatherDataByLocation(location),
-      );
-      setTodaysForecastData(
-        await weatherApi.getDayForecastDataByLocation(location),
-      );
+    if (currentLocationWeather && locationDayForecastWeather) {
+      setCurrentWeatherData(currentLocationWeather);
+      setTodaysForecastData(locationDayForecastWeather);
     }
   };
 
   useEffect(() => {
-    if (!location) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lat = Number(position.coords.latitude.toFixed(2));
-        const lon = Number(position.coords.longitude.toFixed(2));
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = Number(position.coords.latitude.toFixed(2));
+      const lon = Number(position.coords.longitude.toFixed(2));
 
-        getUserCurrentPosition(lat, lon);
-      });
-
-      if(location) {
-        getUserCurrentPosition();
-      }
-    }
+      getUserCurrentPosition(lat, lon);
+    });
   }, []);
 
   return (
