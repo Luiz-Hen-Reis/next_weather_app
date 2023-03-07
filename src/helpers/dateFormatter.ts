@@ -2,25 +2,25 @@ export const dateFormatter = {
   switchDayOfTheWeek: (day: number) => {
     switch (day) {
       case 0:
-        return 'Domingo';
+        'Domingo';
         break;
       case 1:
-        return 'Segunda-feira';
+        'Segunda-feira';
         break;
       case 2:
-        return 'Terça-feira';
+        'Terça-feira';
         break;
       case 3:
-        return 'Quarta-feira';
+        'Quarta-feira';
         break;
       case 4:
-        return 'Quinta-feira';
+        'Quinta-feira';
         break;
       case 5:
-        return 'Sexta-feira';
+        'Sexta-feira';
         break;
       case 6:
-        return 'Sábado';
+        'Sábado';
         break;
       default:
         return 'this day does not exist';
@@ -29,40 +29,40 @@ export const dateFormatter = {
   switchMonth: (month: number) => {
     switch (month) {
       case 0:
-        return 'Janeiro';
+        'Janeiro';
         break;
       case 1:
-        return 'Fevereiro';
+        'Fevereiro';
         break;
       case 2:
-        return 'Março';
+        'Março';
         break;
       case 3:
-        return 'Abril';
+        'Abril';
         break;
       case 4:
-        return 'Maio';
+        'Maio';
         break;
       case 5:
-        return 'Junho';
+        'Junho';
         break;
       case 6:
-        return 'Julho';
+        'Julho';
         break;
       case 7:
-        return 'Agosto';
+        'Agosto';
         break;
       case 8:
-        return 'Setembro';
+        'Setembro';
         break;
       case 9:
-        return 'Outubro';
+        'Outubro';
         break;
       case 10:
-        return 'Novembro';
+        'Novembro';
         break;
       case 11:
-        return 'Dezembro';
+        'Dezembro';
         break;
       default:
         return 'this day does not exist';
